@@ -1,127 +1,59 @@
-body{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.container{
-    height: 75%;
-    background-color: rgb(221, 221, 221);
-    border-radius: 2.5%;
-    padding: 2.4%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-@media (max-width: 300px){
-    .container{
-        width: 93%;
-    }
-    body{
-        font-size: 11px;
-    }
-}
-@media (min-width: 300px){
-    .container{
-        width: 93%;
-    }
-}
-@media (min-width: 400px){
-    .container{
-        width: 80%;
-    }
-}
-@media (min-width: 600px){
-    .container{
-        width: 50%;
-    }
-}
-@media (min-width: 900px){
-    .container{
-        width: 35%;
-    }
-}
-@media (min-width: 1200px){
-    .container{
-        width: 30%;
-    }
-}
-@media (min-width: 1500px){
-    .container{
-        width: 25%;
-    }
-}
-.heading{
-    height: 11%;
-    width: 100%;
-    background-color: rgb(55, 55, 55);
-    border-radius: 5px;
-    margin-bottom: 6%;
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.heading-name{
-    color: white;
-    letter-spacing: 2px;
-    text-align: center;
-    font-size: 1.6rem;
-}
-.display{
-    height: 18%;
-    background-color: white;
-    border-radius: 5px;
-    margin-bottom: 5%;
-    padding: 3%;
-    position: relative;
-    overflow: hidden;
-}
-#display-text, #display-equal, #display-equation{
-    position: absolute;
-    font-size: 1.6rem;
-    bottom: 8%;
-    right: 3%;
-}
-#display-equal{
-    left: 8%;
-}
-#display-equation{
-    top: 7%;
-    font-size: 1.3rem;
-}
-.button-container{
-    width: 100%;
-    height: 63%;
-    display: flex;
-    flex-direction: column;
-    gap: 3%;
-}
-.button-row{
-    display: flex;
-    width: 100%;
-    height: 15%;
-    gap: 2.5%;
-}
-.button{
-    width: 24%;
-    background-color: white;
-    border-radius: 0.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-0{
-    width: 50%;
-}
-.button span{
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-.btn-operator{
-    background-color: rgb(185, 48, 48);
-    color: white;
+var button = document.getElementsByClassName('button');
+var display = document.getElementById('display-text');
+var displayEquation = document.getElementById('display-equation');
+var operand1 = null;
+var operand2 = null;
+var operator = null;
+var result = null;
+for(var i=0 ; i<button.length ; i++){
+    button[i].addEventListener('click', function(){
+        var value = this.getAttribute('data-value');
+        if(value == '+' || value == '-' || value == '*' || value == "/"){
+            operand1 = display.textContent;
+            if(operand1[0] == '-'){
+                displayEquation.innerText = '('+ operand1+')';
+            }
+            if(!displayEquation.textContent == ''){
+                displayEquation.innerText += value;
+            }
+            operator = value;
+            display.innerText = '';
+        }
+        else if(value == '='){
+            operand2 = display.textContent;
+            if(operand1[0] == '-' && operand2[0] == '-'){
+                displayEquation.innerText = '('+ operand1+')'+ operator + '('+ operand2+')';
+            }
+            else if(operand2[0] == '-'){
+                displayEquation.innerText = operand1 + operator + '('+ operand2+')';
+            }
+            result = eval(operand1 + operator + operand2);
+            display.innerText = result;
+        }
+        else if(value == 'AC'){
+            display.innerText = '';
+            displayEquation.innerText = '';
+            operand1 = null;
+            operand2 = null;
+            operator = null;
+        }
+        else if(value == '%'){
+            result = display.textContent;
+            result = eval(result / 100);
+            display.innerText = result;
+            displayEquation.innerText = result;
+        }
+        else if(value == '+/-'){
+            var value1 = display.textContent;
+            if(value1.length>0 && value1[0] == '-'){
+                display.innerText = value1.slice(1);
+            }else{
+                display.innerText = '-' + display.innerText;
+            }
+        }
+        else{
+            display.innerText += value;
+            displayEquation.innerText += value;
+        }
+    });
 }
