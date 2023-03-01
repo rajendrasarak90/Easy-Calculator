@@ -41,6 +41,7 @@ body{
 @media (min-width: 900px){
     .container{
         width: 35%;
+        padding: 18px;
     }
 }
 @media (min-width: 1200px){
