@@ -9,16 +9,16 @@ https://rajendrasarak90.github.io/Easy-Calculator/
 The Simple Calculator project is a web-based calculator that performs basic arithmetic operations such as addition, subtraction, multiplication, and division. It provides a user-friendly interface where users can input numbers and perform calculations with the click of a button.
 
 ### Features:
-**Addition:** Add two or more numbers together.
-**Subtraction:** Subtract one number from another.
-**Multiplication:** Multiply two or more numbers.
-**Division:** Divide one number by another.
-**Clear:** Reset the calculator to start a new calculation.
+**1. Addition:** Add two or more numbers together.
+**2. Subtraction:** Subtract one number from another.
+**3. Multiplication:** Multiply two or more numbers.
+**4. Division:** Divide one number by another.
+**5. Clear:** Reset the calculator to start a new calculation.
 
 ### Technologies Used:
-**HTML:** Markup language used for creating the structure of the calculator.
-**CSS:** Styling language used to design the visual appearance of the calculator.
-**JavaScript:** Programming language used to implement the calculator's functionality.
+**1. HTML:** Markup language used for creating the structure of the calculator.
+**2. CSS:** Styling language used to design the visual appearance of the calculator.
+**3. JavaScript:** Programming language used to implement the calculator's functionality.
 
 ### Getting Started:
 1. Clone the repository to your local machine.
