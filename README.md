@@ -1,5 +1,5 @@
 
-# Project Name: Simple Calculator
+# Project Name: Easy Calculator
 A basic calculator web application built using HTML, CSS, and JavaScript.
 
 ### Hosted URL:
